@@ -7,7 +7,6 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import LoadingScreen from "@/components/layout/LoadingScreen";
 import { cn } from "@/lib/utils";
-import Crosshair from "@/components/animations/Crosshair";
 import SmoothScrolling from "@/components/layout/SmoothScrolling";
 
 // ── SEO Metadata ─────────────────────────────────────────────────────────────
@@ -93,7 +92,6 @@ export default function RootLayout({
       >
         <SmoothScrolling>
           <LoadingScreen>
-            <Crosshair color="#ffffff" />
             {/* Navigation */}
             <Navbar />
 
