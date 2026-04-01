@@ -5,8 +5,9 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import LoadingScreen from "@/components/layout/LoadingScreen";
 import { cn } from "@/lib/utils";
-import SplashCursor from "@/components/animations/SplashCursor";
+import Crosshair from "@/components/animations/Crosshair";
 import SmoothScrolling from "@/components/layout/SmoothScrolling";
 
 // ── SEO Metadata ─────────────────────────────────────────────────────────────
@@ -91,15 +92,17 @@ export default function RootLayout({
         )}
       >
         <SmoothScrolling>
-          <SplashCursor />
-          {/* Navigation */}
-          <Navbar />
+          <LoadingScreen>
+            <Crosshair color="#ffffff" />
+            {/* Navigation */}
+            <Navbar />
 
-          {/* Main content */}
-          <main className="relative">{children}</main>
+            {/* Main content */}
+            <main className="relative">{children}</main>
 
-          {/* Footer */}
-          <Footer />
+            {/* Footer */}
+            <Footer />
+          </LoadingScreen>
         </SmoothScrolling>
       </body>
     </html>
