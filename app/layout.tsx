@@ -6,6 +6,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { cn } from "@/lib/utils";
+import SplashCursor from "@/components/animations/SplashCursor";
 
 // ── SEO Metadata ─────────────────────────────────────────────────────────────
 export const metadata: Metadata = {
@@ -88,6 +89,7 @@ export default function RootLayout({
           "font-sans selection:bg-signal-muted selection:text-signal"
         )}
       >
+        <SplashCursor />
         {/* Navigation */}
         <Navbar />
 
