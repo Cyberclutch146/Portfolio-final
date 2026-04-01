@@ -152,7 +152,8 @@ const Crosshair = ({ color = 'white', containerRef = null }: { color?: string; c
         width: '100%',
         height: '100%',
         pointerEvents: 'none',
-        zIndex: 10000
+        zIndex: 999999,
+        mixBlendMode: 'difference'
       }}
     >
       <svg style={{ position: 'absolute', left: 0, top: 0, width: '100%', height: '100%' }}>

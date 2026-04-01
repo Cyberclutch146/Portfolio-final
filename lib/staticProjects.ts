@@ -19,9 +19,9 @@ export const PROJECTS: Project[] = [
   {
     id: "1",
     slug: "racing-bot",
-    title: "Autonomous Racing Bot",
-    tagline: "High-speed line-following robot with PID control.",
-    description: "Built a compact racing robot using Arduino and optical sensors.",
+    title: "Manual Racing Bot",
+    tagline: "High-speed RC obstacle covering rover.",
+    description: "Built a compact racing robot using RF communication remote and DC brushed motors",
     category: "ROBOTICS",
     techStack: ["Arduino", "C++", "PID Control", "Electronics"],
     featured: true,

@@ -7,9 +7,11 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import LoadingScreen from "@/components/layout/LoadingScreen";
 import SocialDock from "@/components/layout/SocialDock";
+import ScrollWheel from "@/components/layout/ScrollWheel";
 import CanvasCursor from "@/components/CanvasCursor";
 import { cn } from "@/lib/utils";
 import SmoothScrolling from "@/components/layout/SmoothScrolling";
+import { ThemeProvider } from "@/components/theme-provider";
 
 // ── SEO Metadata ─────────────────────────────────────────────────────────────
 export const metadata: Metadata = {
@@ -85,29 +87,32 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "min-h-screen bg-ink-950 text-ink-50 antialiased",
-          "font-sans selection:bg-signal-muted selection:text-signal"
+          "min-h-screen bg-background text-text antialiased transition-colors duration-500",
+          "font-sans selection:bg-gold-faint selection:text-gold"
         )}
       >
-        <CanvasCursor />
-        <SmoothScrolling>
-          <LoadingScreen>
-            {/* Navigation */}
-            <Navbar />
+        <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark" disableTransitionOnChange>
+          <CanvasCursor />
+          <ScrollWheel />
+          <SmoothScrolling>
+            <LoadingScreen>
+              {/* Navigation */}
+              <Navbar />
 
-            {/* Main content */}
-            <main className="relative">{children}</main>
+              {/* Main content */}
+              <main className="relative">{children}</main>
 
-            {/* Footer */}
-            <Footer />
-          </LoadingScreen>
+              {/* Footer */}
+              <Footer />
+            </LoadingScreen>
 
-          {/* Social Dock */}
-          <SocialDock />
-        </SmoothScrolling>
+            {/* Social Dock */}
+            <SocialDock />
+          </SmoothScrolling>
+        </ThemeProvider>
       </body>
     </html>
   );

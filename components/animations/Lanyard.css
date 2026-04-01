@@ -1,0 +1,12 @@
+.lanyard-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Let canvas capture pointers if transparent=false, but here we want to capture drag on the card specifically, which R3F handles via onPointer events.
+                           Actually, if pointer-events is none, canvas won't receive events unless we do pointer-events: auto on the canvas. */
+}
+.lanyard-wrapper canvas {
+  pointer-events: auto;
+}
