@@ -1,6 +1,5 @@
 "use client";
-// @ts-nocheck
-import { useEffect, useState, useRef, useMemo, useCallback } from 'react';
+import React, { useEffect, useState, useRef, useMemo, useCallback } from 'react';
 import { motion } from 'framer-motion';
 
 const styles = {
@@ -34,7 +33,21 @@ export default function DecryptedText({
   animateOn = 'hover',
   clickMode = 'once',
   ...props
-}: any) {
+}: {
+  text: string;
+  speed?: number;
+  maxIterations?: number;
+  sequential?: boolean;
+  revealDirection?: 'start' | 'end' | 'center';
+  useOriginalCharsOnly?: boolean;
+  characters?: string;
+  className?: string;
+  parentClassName?: string;
+  encryptedClassName?: string;
+  animateOn?: 'hover' | 'click' | 'view' | 'inViewHover';
+  clickMode?: 'once' | 'toggle';
+  [key: string]: any;
+}) {
   const [displayText, setDisplayText] = useState(text);
   const [isAnimating, setIsAnimating] = useState(false);
   const [revealedIndices, setRevealedIndices] = useState(new Set<number>());
@@ -68,7 +81,7 @@ export default function DecryptedText({
 
   const computeOrder = useCallback(
     (len: number) => {
-      const order = [];
+      const order: number[] = [];
       if (len <= 0) return order;
       if (revealDirection === 'start') {
         for (let i = 0; i < len; i++) order.push(i);
@@ -148,7 +161,7 @@ export default function DecryptedText({
   useEffect(() => {
     if (!isAnimating) return;
 
-    let interval: NodeJS.Timeout;
+    let interval: ReturnType<typeof setInterval>;
     let currentIteration = 0;
 
     const getNextIndex = (revealedSet: Set<number>) => {
@@ -308,8 +321,8 @@ export default function DecryptedText({
   useEffect(() => {
     if (animateOn !== 'view' && animateOn !== 'inViewHover') return;
 
-    const observerCallback = (entries: any) => {
-      entries.forEach((entry: any) => {
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry: IntersectionObserverEntry) => {
         if (entry.isIntersecting && !hasAnimated) {
           triggerDecrypt();
           setHasAnimated(true);

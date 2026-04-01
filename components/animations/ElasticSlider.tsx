@@ -1,5 +1,5 @@
-"use client";
 // @ts-nocheck
+"use client";
 import { animate, motion, useMotionValue, useMotionValueEvent, useTransform } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { Icon } from '@chakra-ui/react';

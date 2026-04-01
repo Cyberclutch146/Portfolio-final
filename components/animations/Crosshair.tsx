@@ -1,11 +1,10 @@
 "use client";
-// @ts-nocheck
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 
-const lerp = (a, b, n) => (1 - n) * a + n * b;
+const lerp = (a: number, b: number, n: number) => (1 - n) * a + n * b;
 
-const getMousePos = (e, container) => {
+const getMousePos = (e: MouseEvent | React.MouseEvent | PointerEvent | React.PointerEvent, container?: HTMLElement | null) => {
   if (container) {
     const bounds = container.getBoundingClientRect();
     return {
@@ -16,17 +15,17 @@ const getMousePos = (e, container) => {
   return { x: e.clientX, y: e.clientY };
 };
 
-const Crosshair = ({ color = 'white', containerRef = null }) => {
-  const cursorRef = useRef(null);
-  const lineHorizontalRef = useRef(null);
-  const lineVerticalRef = useRef(null);
-  const filterXRef = useRef(null);
-  const filterYRef = useRef(null);
+const Crosshair = ({ color = 'white', containerRef = null }: { color?: string; containerRef?: React.RefObject<HTMLElement> | null }) => {
+  const cursorRef = useRef<HTMLDivElement>(null);
+  const lineHorizontalRef = useRef<HTMLDivElement>(null);
+  const lineVerticalRef = useRef<HTMLDivElement>(null);
+  const filterXRef = useRef<SVGFETurbulenceElement>(null);
+  const filterYRef = useRef<SVGFETurbulenceElement>(null);
 
   let mouse = { x: 0, y: 0 };
 
   useEffect(() => {
-    const handleMouseMove = ev => {
+    const handleMouseMove = (ev: MouseEvent) => {
       // eslint-disable-next-line react-hooks/exhaustive-deps
       mouse = getMousePos(ev, containerRef?.current);
 
@@ -45,10 +44,10 @@ const Crosshair = ({ color = 'white', containerRef = null }) => {
       }
     };
 
-    const target = containerRef?.current || window;
-    target.addEventListener('mousemove', handleMouseMove);
+    const target = (containerRef?.current || window) as EventTarget;
+    target.addEventListener('mousemove', handleMouseMove as EventListener);
 
-    const renderedStyles = {
+    const renderedStyles: Record<string, { previous: number; current: number; amt: number }> = {
       tx: { previous: 0, current: 0, amt: 0.15 },
       ty: { previous: 0, current: 0, amt: 0.15 }
     };
@@ -78,13 +77,15 @@ const Crosshair = ({ color = 'white', containerRef = null }) => {
       .timeline({
         paused: true,
         onStart: () => {
-          lineHorizontalRef.current.style.filter = `url(#filter-noise-x)`;
-          lineVerticalRef.current.style.filter = `url(#filter-noise-y)`;
+          if (lineHorizontalRef.current && lineVerticalRef.current) {
+            lineHorizontalRef.current.style.filter = `url(#filter-noise-x)`;
+            lineVerticalRef.current.style.filter = `url(#filter-noise-y)`;
+          }
         },
         onUpdate: () => {
           if (filterXRef.current && filterYRef.current) {
-            filterXRef.current.setAttribute('baseFrequency', primitiveValues.turbulence);
-            filterYRef.current.setAttribute('baseFrequency', primitiveValues.turbulence);
+            filterXRef.current.setAttribute('baseFrequency', primitiveValues.turbulence.toString());
+            filterYRef.current.setAttribute('baseFrequency', primitiveValues.turbulence.toString());
           }
         },
         onComplete: () => {
@@ -131,8 +132,8 @@ const Crosshair = ({ color = 'white', containerRef = null }) => {
     });
 
     return () => {
-      target.removeEventListener('mousemove', handleMouseMove);
-      target.removeEventListener('mousemove', onMouseMove);
+      target.removeEventListener('mousemove', handleMouseMove as EventListener);
+      target.removeEventListener('mousemove', onMouseMove as EventListener);
       links.forEach(link => {
         link.removeEventListener('mouseenter', enter);
         link.removeEventListener('mouseleave', leave);
