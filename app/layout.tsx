@@ -6,6 +6,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import LoadingScreen from "@/components/layout/LoadingScreen";
+import SocialDock from "@/components/layout/SocialDock";
 import { cn } from "@/lib/utils";
 import SmoothScrolling from "@/components/layout/SmoothScrolling";
 
@@ -101,6 +102,9 @@ export default function RootLayout({
             {/* Footer */}
             <Footer />
           </LoadingScreen>
+
+          {/* Social Dock */}
+          <SocialDock />
         </SmoothScrolling>
       </body>
     </html>

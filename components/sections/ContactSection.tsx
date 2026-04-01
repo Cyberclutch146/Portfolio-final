@@ -25,20 +25,20 @@ const CHANNELS = [
   {
     icon: "✉",
     label: "Email",
-    value: "contact@swagata.dev",
-    href: "mailto:contact@swagata.dev",
+    value: "sagotogdg@gmail.com",
+    href: "mailto:sagotogdg@gmail.com",
   },
   {
     icon: "⬛",
     label: "GitHub",
     value: "github.com/swagata-ganguly",
-    href: "https://github.com/swagata-ganguly",
+    href: "https://github.com/Cyberclutch146",
   },
   {
     icon: "in",
     label: "LinkedIn",
     value: "linkedin.com/in/swagata-ganguly",
-    href: "https://linkedin.com/in/swagata-ganguly",
+    href: "https://www.linkedin.com/in/swagata-ganguly-453aa6327/",
   },
 ];
 
