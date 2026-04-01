@@ -9,9 +9,9 @@ import LetterGlitch from "@/components/animations/LetterGlitch";
 
 // ── Typing animation strings ──────────────────────────────────────────────────
 const ROLES = [
-  "full stack developer.",
+  "develops full stack projects.",
   "designs circuits.",
-  "solves problems.",
+  "ships scalable code.",
   "survives on caffeine and hope.",
   "makes things work.",
 ];

@@ -7,6 +7,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import LoadingScreen from "@/components/layout/LoadingScreen";
 import SocialDock from "@/components/layout/SocialDock";
+import CanvasCursor from "@/components/CanvasCursor";
 import { cn } from "@/lib/utils";
 import SmoothScrolling from "@/components/layout/SmoothScrolling";
 
@@ -91,6 +92,7 @@ export default function RootLayout({
           "font-sans selection:bg-signal-muted selection:text-signal"
         )}
       >
+        <CanvasCursor />
         <SmoothScrolling>
           <LoadingScreen>
             {/* Navigation */}
