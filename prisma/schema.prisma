@@ -1,0 +1,78 @@
+// prisma/schema.prisma
+// Database schema for Swagata Ganguly's portfolio
+// PostgreSQL via Railway / Supabase / Neon
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ─── Projects ─────────────────────────────────────────────────────────────────
+model Project {
+  id          String   @id @default(cuid())
+  slug        String   @unique                 // URL-friendly identifier, e.g. "racing-bot"
+  title       String
+  tagline     String                           // One-liner shown on card
+  description String                           // Full markdown-compatible description
+  problem     String?                          // Case-study: problem statement
+  approach    String?                          // Case-study: how it was tackled
+  learnings   String?                          // Case-study: key takeaways
+  techStack   String[]                         // ["Arduino", "C++", "PID Control"]
+  category    ProjectCategory
+  githubUrl   String?
+  demoUrl     String?
+  coverImage  String?                          // Path or URL to cover image
+  images      String[]                         // Additional image URLs
+  featured    Boolean  @default(false)         // Show on homepage
+  order       Int      @default(0)             // Manual sort order
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+enum ProjectCategory {
+  ROBOTICS
+  EMBEDDED
+  SOFTWARE
+  CREATIVE
+  WEB
+}
+
+// ─── Skills ───────────────────────────────────────────────────────────────────
+model Skill {
+  id       String        @id @default(cuid())
+  name     String
+  level    Int           // 0-100 proficiency
+  category SkillCategory
+  icon     String?       // Icon name or emoji
+  order    Int           @default(0)
+}
+
+enum SkillCategory {
+  LANGUAGES
+  HARDWARE
+  TOOLS
+  DESIGN
+  SOFT
+}
+
+// ─── Contact Messages ─────────────────────────────────────────────────────────
+model ContactMessage {
+  id        String        @id @default(cuid())
+  name      String
+  email     String
+  subject   String
+  message   String
+  status    MessageStatus @default(UNREAD)
+  createdAt DateTime      @default(now())
+}
+
+enum MessageStatus {
+  UNREAD
+  READ
+  REPLIED
+  ARCHIVED
+}
