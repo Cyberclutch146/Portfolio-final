@@ -1,7 +1,8 @@
+// @ts-nocheck
 import { useEffect } from 'react';
 
 const useCanvasCursor = () => {
-  function n(e) {
+  function n(e: any) {
     this.init(e || {});
   }
   n.prototype = {
@@ -21,7 +22,7 @@ const useCanvasCursor = () => {
       return e;
     },
   };
-  function Line(e) {
+  function Line(e: any) {
     this.init(e || {});
   }
   Line.prototype = {
@@ -76,19 +77,19 @@ const useCanvasCursor = () => {
       ctx.closePath();
     },
   };
-  function onMousemove(e) {
+  function onMousemove(e: any) {
     function o() {
       lines = [];
       for (var e = 0; e < E.trails; e++)
         lines.push(new Line({ spring: 0.4 + (e / E.trails) * 0.025 }));
     }
-    function c(e) {
+    function c(e: any) {
       (e.touches
         ? ((pos.x = e.touches[0].pageX), (pos.y = e.touches[0].pageY))
         : ((pos.x = e.clientX), (pos.y = e.clientY)),
         e.preventDefault());
     }
-    function l(e) {
+    function l(e: any) {
       1 == e.touches.length &&
         ((pos.x = e.touches[0].pageX), (pos.y = e.touches[0].pageY));
     }

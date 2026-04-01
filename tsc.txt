@@ -1,0 +1,51 @@
+﻿hooks/useCanvasCursor.ts(5,5): error TS2683: 'this' implicitly has type 'any' because it does not have a type annotation.
+hooks/useCanvasCursor.ts(8,21): error TS7006: Parameter 'e' implicitly has an 'any' type.
+hooks/useCanvasCursor.ts(25,5): error TS2683: 'this' implicitly has type 'any' because it does not have a type annotation.
+hooks/useCanvasCursor.ts(28,21): error TS7006: Parameter 'e' implicitly has an 'any' type.
+hooks/useCanvasCursor.ts(33,13): error TS7009: 'new' expression, whose target lacks a construct signature, implicitly has an 'any' type.
+hooks/useCanvasCursor.ts(34,19): error TS2339: Property 'x' does not exist on type '{}'.
+hooks/useCanvasCursor.ts(35,19): error TS2339: Property 'y' does not exist on type '{}'.
+hooks/useCanvasCursor.ts(42,20): error TS2339: Property 'x' does not exist on type '{}'.
+hooks/useCanvasCursor.ts(43,20): error TS2339: Property 'y' does not exist on type '{}'.
+hooks/useCanvasCursor.ts(63,7): error TS7005: Variable 'ctx' implicitly has an 'any' type.
+hooks/useCanvasCursor.ts(64,7): error TS7005: Variable 'ctx' implicitly has an 'any' type.
+hooks/useCanvasCursor.ts(70,9): error TS7005: Variable 'ctx' implicitly has an 'any' type.
+hooks/useCanvasCursor.ts(74,7): error TS7005: Variable 'ctx' implicitly has an 'any' type.
+hooks/useCanvasCursor.ts(75,7): error TS7005: Variable 'ctx' implicitly has an 'any' type.
+hooks/useCanvasCursor.ts(76,7): error TS7005: Variable 'ctx' implicitly has an 'any' type.
+hooks/useCanvasCursor.ts(83,20): error TS7009: 'new' expression, whose target lacks a construct signature, implicitly has an 'any' type.
+hooks/useCanvasCursor.ts(87,17): error TS2339: Property 'x' does not exist on type '{}'.
+hooks/useCanvasCursor.ts(87,47): error TS2339: Property 'y' does not exist on type '{}'.
+hooks/useCanvasCursor.ts(88,17): error TS2339: Property 'x' does not exist on type '{}'.
+hooks/useCanvasCursor.ts(88,38): error TS2339: Property 'y' does not exist on type '{}'.
+hooks/useCanvasCursor.ts(93,15): error TS2339: Property 'x' does not exist on type '{}'.
+hooks/useCanvasCursor.ts(93,45): error TS2339: Property 'y' does not exist on type '{}'.
+hooks/useCanvasCursor.ts(105,9): error TS7005: Variable 'ctx' implicitly has an 'any' type.
+hooks/useCanvasCursor.ts(106,7): error TS7005: Variable 'ctx' implicitly has an 'any' type.
+hooks/useCanvasCursor.ts(107,7): error TS7005: Variable 'ctx' implicitly has an 'any' type.
+hooks/useCanvasCursor.ts(107,27): error TS7005: Variable 'ctx' implicitly has an 'any' type.
+hooks/useCanvasCursor.ts(107,45): error TS7005: Variable 'ctx' implicitly has an 'any' type.
+hooks/useCanvasCursor.ts(108,7): error TS7005: Variable 'ctx' implicitly has an 'any' type.
+hooks/useCanvasCursor.ts(110,33): error TS7005: Variable 'f' implicitly has an 'any' type.
+hooks/useCanvasCursor.ts(111,39): error TS7005: Variable 'f' implicitly has an 'any' type.
+hooks/useCanvasCursor.ts(112,7): error TS7005: Variable 'ctx' implicitly has an 'any' type.
+hooks/useCanvasCursor.ts(113,7): error TS7005: Variable 'ctx' implicitly has an 'any' type.
+hooks/useCanvasCursor.ts(115,14): error TS7005: Variable 'lines' implicitly has an 'any[]' type.
+hooks/useCanvasCursor.ts(118,7): error TS7005: Variable 'ctx' implicitly has an 'any' type.
+hooks/useCanvasCursor.ts(123,5): error TS7005: Variable 'ctx' implicitly has an 'any' type.
+hooks/useCanvasCursor.ts(124,5): error TS7005: Variable 'ctx' implicitly has an 'any' type.
+hooks/useCanvasCursor.ts(126,7): error TS7034: Variable 'ctx' implicitly has type 'any' in some locations where its type cannot be determined.
+hooks/useCanvasCursor.ts(127,5): error TS7034: Variable 'f' implicitly has type 'any' in some locations where its type cannot be determined.
+hooks/useCanvasCursor.ts(130,5): error TS7034: Variable 'lines' implicitly has type 'any[]' in some locations where its type cannot be determined.
+hooks/useCanvasCursor.ts(140,5): error TS2683: 'this' implicitly has type 'any' because it does not have a type annotation.
+hooks/useCanvasCursor.ts(141,5): error TS2683: 'this' implicitly has type 'any' because it does not have a type annotation.
+hooks/useCanvasCursor.ts(142,5): error TS2683: 'this' implicitly has type 'any' because it does not have a type annotation.
+hooks/useCanvasCursor.ts(143,5): error TS2683: 'this' implicitly has type 'any' because it does not have a type annotation.
+hooks/useCanvasCursor.ts(148,18): error TS2339: Property 'getContext' does not exist on type 'HTMLElement'.
+hooks/useCanvasCursor.ts(152,9): error TS7009: 'new' expression, whose target lacks a construct signature, implicitly has an 'any' type.
+hooks/useCanvasCursor.ts(163,12): error TS7005: Variable 'ctx' implicitly has an 'any' type.
+hooks/useCanvasCursor.ts(164,9): error TS7005: Variable 'ctx' implicitly has an 'any' type.
+hooks/useCanvasCursor.ts(169,7): error TS7005: Variable 'ctx' implicitly has an 'any' type.
+hooks/useCanvasCursor.ts(176,11): error TS7005: Variable 'ctx' implicitly has an 'any' type.
+hooks/useCanvasCursor.ts(184,13): error TS7005: Variable 'ctx' implicitly has an 'any' type.
+hooks/useCanvasCursor.ts(190,13): error TS7005: Variable 'ctx' implicitly has an 'any' type.
