@@ -1,0 +1,53 @@
+.border-glow-card {
+  --cursor-angle: 0deg;
+  --edge-proximity: 0;
+  position: relative;
+  width: fit-content;
+  border-radius: var(--border-radius);
+  background: var(--card-bg);
+  padding: 1px;
+}
+
+.border-glow-card .edge-light {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.border-glow-card .edge-light::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(
+    from var(--cursor-angle),
+    transparent 0deg,
+    var(--glow-color) calc(var(--cone-spread) * 0.5deg),
+    var(--glow-color) calc(var(--cone-spread) * 1deg),
+    transparent calc(var(--cone-spread) * 1.5deg)
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: calc(var(--edge-proximity) / 100);
+}
+
+.border-glow-card::before {
+  display: none; /* Removed problematic fuzzy radial glow as requested */
+}
+
+.border-glow-inner {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: auto;
+  z-index: 1;
+  border-radius: calc(var(--border-radius) - 1px);
+}
+
+.sweep-active {
+  transition: --cursor-angle 0.1s linear, --edge-proximity 0.1s linear;
+}

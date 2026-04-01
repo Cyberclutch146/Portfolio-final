@@ -4,22 +4,22 @@ import { motion, AnimatePresence } from "framer-motion";
 import CountUp from "@/components/animations/CountUp";
 import DecryptedText from "@/components/animations/DecryptedText";
 import FadeContent from "@/components/animations/FadeContent";
+import GridScan from "@/components/animations/GridScan";
+
+type Phase = "CINEMATIC" | "READY" | "WELCOME" | "REVEAL";
 
 export default function LoadingScreen({ children }: { children: React.ReactNode }) {
   const [isFirstLoad, setIsFirstLoad] = useState(true);
-  
-  // phase 1: Decrypting & Counting
-  // phase 2: "welcome to my world" FadeContent
-  // phase 3: Load complete, unmount overlay
-  const [phase, setPhase] = useState<1 | 2 | 3>(1);
+  const [phase, setPhase] = useState<Phase>("CINEMATIC");
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    // Safety escape hatch in case anything fails during animation after 10 seconds
     const timer = setTimeout(() => {
-      setIsFirstLoad(false);
-    }, 10000);
+      // Emergency escape
+      if (phase === "CINEMATIC") setPhase("READY");
+    }, 15000);
     return () => clearTimeout(timer);
-  }, []);
+  }, [phase]);
 
   if (!isFirstLoad) {
     return <>{children}</>;
@@ -28,61 +28,83 @@ export default function LoadingScreen({ children }: { children: React.ReactNode 
   return (
     <>
       <AnimatePresence>
-        {phase !== 3 && (
+        {phase !== "REVEAL" && (
           <motion.div
-            className="fixed inset-0 z-[99999] bg-ink-950 flex flex-col items-center justify-center font-mono selection:bg-transparent"
+            className="fixed inset-0 z-[99999] bg-black flex flex-col items-center justify-center font-mono selection:bg-transparent overflow-hidden"
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 1.2, ease: "easeInOut" }}
           >
-            <div className="flex flex-col items-center gap-4">
-               {phase === 1 && (
+            {/* Background Layer */}
+            <div className="absolute inset-0 z-0 opacity-40">
+                <GridScan
+                    sensitivity={0.3}
+                    lineThickness={1}
+                    linesColor="#2a220a"
+                    gridScale={0.15}
+                    scanColor="#ccaa2c"
+                    scanOpacity={0.2}
+                    enablePost
+                    bloomIntensity={0.4}
+                    chromaticAberration={0.001}
+                    noiseIntensity={0.01}
+                />
+            </div>
+
+            <div className="relative z-10 flex flex-col items-center w-full max-w-2xl px-6 pointer-events-auto">
+               
+               {/* Consolidated Stage: Loading */}
+               {(phase === "CINEMATIC" || phase === "READY") && (
                  <motion.div 
-                   key="phase1"
-                   initial={{ opacity: 0 }}
-                   animate={{ opacity: 1 }}
-                   exit={{ opacity: 0, y: -20, filter: "blur(5px)" }}
-                   transition={{ duration: 0.5 }}
-                   className="flex justify-center items-center gap-2 md:gap-4 text-signal text-lg md:text-2xl lg:text-4xl font-bold tracking-widest md:tracking-[0.15em]"
+                   key="loading-group"
+                   initial={{ opacity: 0, scale: 0.95 }}
+                   animate={{ opacity: 1, scale: 1 }}
+                   exit={{ opacity: 0, y: -20, filter: "blur(10px)" }}
+                   transition={{ duration: 0.4 }}
+                   className="flex flex-col items-center gap-12 w-full"
                  >
-                   <DecryptedText 
-                     text="Accessing the mainframe : " 
-                     speed={35} 
-                     maxIterations={15} 
-                     animateOn="view"
-                     revealDirection="start"
-                     sequential={true}
-                     className="text-signal"
-                     encryptedClassName="text-ink-600"
-                   />
-                   <CountUp
-                     from={0}
-                     to={100}
-                     direction="up"
-                     duration={2}
-                     startWhen={true}
-                     onEnd={() => {
-                        // Switch to the welcome text slightly after count finishes
-                        setTimeout(() => setPhase(2), 400);
-                     }}
-                   />
+                   <div className="flex flex-col items-center gap-8 w-full">
+                      <div className="flex items-center gap-3 text-signal text-xl md:text-3xl font-bold tracking-widest text-center">
+                        <DecryptedText 
+                          text="Accessing the mainframe : " 
+                          speed={120} 
+                          maxIterations={30} 
+                          animateOn="view"
+                          revealDirection="start"
+                          sequential={true}
+                          className="text-[#ccaa2c]"
+                          encryptedClassName="text-ink-600"
+                        />
+                        <CountUp
+                          from={0}
+                          to={100}
+                          duration={3.5}
+                          onStart={() => setProgress(0)}
+                          onEnd={() => {
+                              setPhase("WELCOME");
+                          }}
+                          className="min-w-[4ch] text-left text-[#ccaa2c]"
+                          onUpdate={(latest: number) => setProgress(latest)}
+                        />
+                      </div>
+                   </div>
                  </motion.div>
                )}
 
-               {phase === 2 && (
+               {/* Stage 3: Welcome Transition */}
+               {phase === "WELCOME" && (
                  <FadeContent
                    blur={true}
-                   duration={800}
-                   ease="power2.out"
+                   duration={500}
+                   ease="power3.out"
                    initialOpacity={0}
-                   disappearAfter={1200}
-                   disappearDuration={800}
+                   disappearAfter={500}
+                   disappearDuration={500}
                    onDisappearanceComplete={() => {
-                        // Unmount the whole screen
-                        setPhase(3);
+                        setPhase("REVEAL");
                         setIsFirstLoad(false);
                    }}
-                   className="text-4xl md:text-6xl lg:text-8xl font-display text-ink-50 font-black tracking-tighter text-center"
+                   className="text-3xl md:text-5xl font-display text-white font-bold tracking-tight text-center"
                  >
                    welcome to my world
                  </FadeContent>
@@ -92,13 +114,10 @@ export default function LoadingScreen({ children }: { children: React.ReactNode 
         )}
       </AnimatePresence>
       
-      {/* 
-         Render the website underneath. Use 'h-screen overflow-hidden' to 
-         prevent the user from scrolling the site before the overlay disappears.
-      */}
+      {/* Website reveal logic */}
       <div 
-        aria-hidden={phase !== 3}
-        className={phase !== 3 ? "h-screen overflow-hidden pointer-events-none" : ""}
+        aria-hidden={phase !== "REVEAL"}
+        className={phase !== "REVEAL" ? "h-screen overflow-hidden pointer-events-none" : ""}
       >
         {children}
       </div>
