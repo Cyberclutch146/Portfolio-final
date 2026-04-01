@@ -38,8 +38,6 @@ export default function LoadingScreen({ children }: { children: React.ReactNode 
     };
   }, []);
 
-  if (!isFirstLoad) return <>{children}</>;
-
   return (
     <>
       <AnimatePresence mode="wait">
@@ -170,7 +168,7 @@ export default function LoadingScreen({ children }: { children: React.ReactNode 
                         style={{ background: "radial-gradient(ellipse, #ccaa2c 0%, transparent 70%)" }}
                       />
                       <motion.h1
-                        className="text-[clamp(64px,15vw,140px)] font-bold text-white leading-none tracking-tighter select-none"
+                        className="text-[clamp(90px,18vw,180px)] font-bold text-white leading-none tracking-tighter select-none"
                         style={{ fontFamily: "'Inter', 'Helvetica Neue', sans-serif", letterSpacing: "-0.04em" }}
                         initial={{ opacity: 0, y: 30, filter: "blur(12px)" }}
                         animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -191,7 +189,7 @@ export default function LoadingScreen({ children }: { children: React.ReactNode 
 
                     {/* Subtitle */}
                     <motion.p
-                      className="text-[11px] md:text-[13px] tracking-[0.35em] text-[#ccaa2c]/70 font-mono uppercase"
+                      className="text-[13px] md:text-[18px] tracking-[0.35em] text-[#ccaa2c]/70 font-mono uppercase"
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: 0.7, ease: "easeOut" }}
@@ -212,7 +210,7 @@ export default function LoadingScreen({ children }: { children: React.ReactNode 
                     transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                   >
                     <motion.p
-                      className="text-[clamp(28px,6vw,60px)] font-light text-white leading-tight tracking-tight"
+                      className="text-[clamp(36px,8vw,76px)] font-light text-white leading-tight tracking-tight"
                       style={{ fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}
                     >
                       welcome to my world
@@ -225,7 +223,7 @@ export default function LoadingScreen({ children }: { children: React.ReactNode 
                       style={{ width: "100px", transformOrigin: "center" }}
                     />
                     <motion.p
-                      className="text-[11px] tracking-[0.3em] text-[#ccaa2c]/50 font-mono uppercase"
+                      className="text-[13px] md:text-[16px] tracking-[0.3em] text-[#ccaa2c]/50 font-mono uppercase"
                       initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.4, delay: 0.4 }}
@@ -353,7 +351,7 @@ function DecryptingLine({ text, delay = 0 }: { text: string; delay?: number }) {
     <div className="flex items-center gap-2">
       <span className="w-1 h-1 rounded-full bg-[#ccaa2c]/60 inline-block" />
       <span
-        className="text-[11px] md:text-[13px] font-mono tracking-[0.25em] uppercase"
+        className="text-[13px] md:text-[16px] font-mono tracking-[0.25em] uppercase"
         style={{ color: done ? "rgba(204,170,44,0.8)" : "rgba(204,170,44,0.45)" }}
       >
         {display.join("")}

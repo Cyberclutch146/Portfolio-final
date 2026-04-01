@@ -71,6 +71,12 @@ function CoordLabel({ x, y, value }: { x: number; y: number; value: string }) {
 
 // ── Hero Section ──────────────────────────────────────────────────────────────
 export default function HeroSection() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const containerVariants = {
     hidden: {},
     show: {
@@ -122,12 +128,13 @@ export default function HeroSection() {
 
       {/* ── Main content ── */}
       <div className="section-container relative z-10 w-full py-20">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="show"
-          className="max-w-4xl"
-        >
+        {mounted && (
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="show"
+            className="max-w-4xl"
+          >
           {/* Status badge */}
           <motion.div variants={itemVariants} className="mb-8">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-ink-700 bg-ink-900/50">
@@ -197,6 +204,7 @@ export default function HeroSection() {
             </div>
           </motion.div>
         </motion.div>
+        )}
 
         {/* ── Decorative right column (desktop only) ── */}
         <div
