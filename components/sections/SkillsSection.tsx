@@ -30,8 +30,9 @@ function SkillBar({ skill, inView }: { skill: Skill; inView: boolean }) {
       <div className="h-px bg-ink-800 w-full relative overflow-hidden rounded-full">
         <motion.div
           initial={{ scaleX: 0 }}
-          animate={{ scaleX: inView ? skill.level / 100 : 0 }}
-          transition={{ duration: 1, delay: 0.1, ease: [0.19, 1, 0.22, 1] }}
+          whileInView={{ scaleX: inView ? skill.level / 100 : 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           className="absolute inset-y-0 left-0 right-0 origin-left"
           style={{
             background: "linear-gradient(90deg, #e8b94a, #3ecfcf)",
@@ -77,10 +78,10 @@ export default function SkillsSection({ skills }: { skills: Skill[] }) {
       <div className="section-container">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 40, scale: 0.95 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="mb-12"
         >
           <p className="section-label">

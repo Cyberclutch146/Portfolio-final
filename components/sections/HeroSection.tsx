@@ -5,6 +5,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import LetterGlitch from "@/components/animations/LetterGlitch";
 
 // ── Typing animation strings ──────────────────────────────────────────────────
 const ROLES = [
@@ -78,11 +79,12 @@ export default function HeroSection() {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 40, scale: 0.95 },
     show: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.7, ease: [0.19, 1, 0.22, 1] },
+      scale: 1,
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
     },
   };
 
@@ -91,8 +93,16 @@ export default function HeroSection() {
       id="hero"
       className="relative min-h-screen flex items-center pt-16 overflow-hidden"
     >
-      {/* ── Background — grid + gradient ── */}
-      <div className="absolute inset-0 grid-bg opacity-40" aria-hidden />
+      {/* ── Background — glitch + grid + gradient ── */}
+      <div className="absolute inset-0 z-0 opacity-15 mix-blend-screen pointer-events-none">
+        <LetterGlitch
+          glitchSpeed={50}
+          centerVignette={true}
+          outerVignette={false}
+          smooth={true}
+        />
+      </div>
+      <div className="absolute inset-0 grid-bg opacity-40 mix-blend-overlay" aria-hidden />
       <div
         className="absolute inset-0"
         style={{

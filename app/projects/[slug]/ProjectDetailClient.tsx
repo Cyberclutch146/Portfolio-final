@@ -5,6 +5,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import type { Project } from "@prisma/client";
+import LetterGlitch from "@/components/animations/LetterGlitch";
 
 const CATEGORY_LABELS: Record<string, string> = {
   ROBOTICS: "robotics",
@@ -47,12 +48,23 @@ export default function ProjectDetailClient({ project }: { project: Project }) {
   ].filter((s) => s.content);
 
   return (
-    <div className="min-h-screen pt-24 pb-32">
+    <div className="relative min-h-screen pt-24 pb-32">
+      {/* ── Animated Background ── */}
+      <div className="absolute inset-0 z-[-1] overflow-hidden opacity-10 pointer-events-none mix-blend-screen">
+        <LetterGlitch
+          glitchSpeed={50}
+          centerVignette={true}
+          outerVignette={false}
+          smooth={true}
+        />
+        <div className="absolute bottom-0 left-0 right-0 h-[40vh] bg-gradient-to-t from-ink-950 to-transparent" />
+      </div>
+
       {/* ── Back link ── */}
       <div className="section-container mb-10">
         <Link
           href="/#projects"
-          className="inline-flex items-center gap-2 font-mono text-xs text-ink-500 hover:text-signal transition-colors"
+          className="relative z-10 inline-flex items-center gap-2 font-mono text-xs text-ink-500 hover:text-signal transition-colors"
         >
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden>
             <path d="M11 7H3M6 4L3 7l3 3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />

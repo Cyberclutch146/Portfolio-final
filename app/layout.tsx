@@ -7,6 +7,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { cn } from "@/lib/utils";
 import SplashCursor from "@/components/animations/SplashCursor";
+import SmoothScrolling from "@/components/layout/SmoothScrolling";
 
 // ── SEO Metadata ─────────────────────────────────────────────────────────────
 export const metadata: Metadata = {
@@ -89,15 +90,17 @@ export default function RootLayout({
           "font-sans selection:bg-signal-muted selection:text-signal"
         )}
       >
-        <SplashCursor />
-        {/* Navigation */}
-        <Navbar />
+        <SmoothScrolling>
+          <SplashCursor />
+          {/* Navigation */}
+          <Navbar />
 
-        {/* Main content */}
-        <main className="relative">{children}</main>
+          {/* Main content */}
+          <main className="relative">{children}</main>
 
-        {/* Footer */}
-        <Footer />
+          {/* Footer */}
+          <Footer />
+        </SmoothScrolling>
       </body>
     </html>
   );
