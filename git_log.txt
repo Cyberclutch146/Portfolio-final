@@ -1,0 +1,10 @@
+﻿b80c07a - fix : build pnpm issue fixed
+f04ecec - fix : Fixed Dock.tsx to solve build error
+9a95356 - fix: add three types
+04ba618 - fix: prisma client generation
+049dba6 - Deployment pnpm fix
+8c58178 - fix: update lockfile
+eba51b1 - sob sesh ar ki
+3f69f1b - sob sesh ar ki
+17c01b2 - added hover dock . fixed stability bug , changed redirect links
+8383a86 - fixed hero section load in bug
