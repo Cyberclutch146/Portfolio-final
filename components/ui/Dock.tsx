@@ -1,12 +1,23 @@
 'use client';
 
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { motion, useMotionValue, useSpring, useTransform, MotionValue, SpringOptions } from 'framer-motion';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import './Dock.css';
 
-function DockItem({ children, className = '', onClick, mouseX, spring, distance, magnification, baseItemSize }) {
-  const ref = useRef(null);
+interface DockItemProps {
+  children: React.ReactNode;
+  className?: string;
+  onClick?: () => void;
+  mouseX: MotionValue<number>;
+  spring: SpringOptions;
+  distance: number;
+  magnification: number;
+  baseItemSize: number;
+}
+
+function DockItem({ children, className = '', onClick, mouseX, spring, distance, magnification, baseItemSize }: DockItemProps) {
+  const ref = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
 
   const mouseDistance = useTransform(mouseX, val => {
@@ -48,8 +59,28 @@ function DockItem({ children, className = '', onClick, mouseX, spring, distance,
   );
 }
 
-function DockIcon({ children }) {
+interface DockIconProps {
+  children: React.ReactNode;
+}
+
+function DockIcon({ children }: DockIconProps) {
   return <div className="dock-icon-inner">{children}</div>;
+}
+
+export interface DockItemData {
+  label: string;
+  icon: React.ReactNode;
+  onClick?: () => void;
+}
+
+export interface DockProps {
+  items: DockItemData[];
+  className?: string;
+  spring?: SpringOptions;
+  magnification?: number;
+  distance?: number;
+  panelHeight?: number;
+  baseItemSize?: number;
 }
 
 export default function Dock({
@@ -60,7 +91,7 @@ export default function Dock({
   distance = 200,
   panelHeight = 68,
   baseItemSize = 50
-}) {
+}: DockProps) {
   const [mounted, setMounted] = useState(false);
   const mouseX = useMotionValue(Infinity);
   const isHovered = useMotionValue(0);
@@ -70,7 +101,7 @@ export default function Dock({
     setMounted(true);
   }, []);
 
-  const handleMouseMove = useCallback((e) => {
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     if (!dockRef.current) return;
     isHovered.set(1);
     mouseX.set(e.clientX);
