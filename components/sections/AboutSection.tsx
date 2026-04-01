@@ -1,4 +1,4 @@
-"use client";
+"use client"; //hello
 // components/sections/AboutSection.tsx
 // Cinematic engineering identity section
 
