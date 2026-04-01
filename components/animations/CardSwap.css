@@ -1,0 +1,17 @@
+.card-swap-container {
+  position: relative;
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: var(--color-surface-2);
+  will-change: transform;
+  transform: translate(-50%, -50%); /* Base centering, GSAP will override with xPercent/yPercent */
+}

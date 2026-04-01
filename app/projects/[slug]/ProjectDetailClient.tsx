@@ -12,7 +12,7 @@ const CATEGORY_LABELS: Record<string, string> = {
   EMBEDDED: "embedded",
   SOFTWARE: "software",
   CREATIVE: "creative",
-  WEB:      "web",
+  WEB: "web",
 };
 
 // ── Section block (problem / approach / learnings) ───────────────────────────
