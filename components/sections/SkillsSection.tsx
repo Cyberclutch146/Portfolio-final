@@ -43,18 +43,18 @@ function SkillBadge({ skill, index }: { skill: Skill; index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.04, ease: [0.19, 1, 0.22, 1] }}
-      className="group relative flex items-center gap-3 px-5 py-3 cinematic-box overflow-hidden cursor-default transition-all duration-400 hover:-translate-y-1 hover:shadow-[0_4px_20px_rgba(204,170,44,0.15)]"
+      className="group relative flex items-center gap-3 px-5 py-3 cinematic-box overflow-hidden cursor-default transition-all duration-400 hover:-translate-y-1 hover:shadow-[0_4px_25px_rgba(204,170,44,0.15)] border-white/[0.04] dark:border-white/[0.06] hover:border-gold/30"
     >
       {/* Background sweep on hover */}
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold-faint to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out opacity-20" />
       
       {/* Icon */}
-      <div className="relative z-10 w-5 h-5 flex items-center justify-center">
-        <Icon className="w-full h-full text-text-dim group-hover:text-gold transition-colors duration-400" />
+      <div className="relative z-10 w-6 h-6 flex items-center justify-center">
+        <Icon className="w-full h-full text-text-dim/80 group-hover:text-gold transition-all duration-400 group-hover:scale-110" />
       </div>
 
       {/* Label */}
-      <span className="relative z-10 font-display font-medium tracking-[0.1em] text-[12px] sm:text-sm text-text-muted group-hover:text-text transition-colors duration-400 uppercase">
+      <span className="relative z-10 font-display font-medium tracking-[0.12em] text-[12px] sm:text-sm text-text-dim group-hover:text-text transition-colors duration-400 uppercase">
         {skill.name}
       </span>
     </motion.div>
@@ -77,7 +77,7 @@ export default function SkillsSection({ skills }: { skills: Skill[] }) {
   const meta = CATEGORY_META[activeCategory];
 
   return (
-    <section id="skills" className="py-32 relative border-t border-border-dim overflow-hidden bg-background transition-colors duration-500">
+    <section id="skills" className="pt-12 pb-6 relative border-t border-border-dim overflow-hidden bg-background transition-colors duration-500">
       {/* Background ambient glow */}
       <div className="absolute bottom-0 right-0 translate-y-1/2 translate-x-1/2 w-[800px] h-[800px] bg-gold rounded-full opacity-[0.015] blur-[120px] pointer-events-none" />
 
@@ -112,7 +112,7 @@ export default function SkillsSection({ skills }: { skills: Skill[] }) {
                 onClick={() => setActiveCategory(cat)}
                 className={cn(
                   "px-4 md:px-6 py-2 transition-all duration-400 uppercase tracking-widest text-[11px] sm:text-xs font-mono relative",
-                  isActive ? "text-text" : "text-text-muted hover:text-text-dim"
+                  isActive ? "text-text scale-105" : "text-text-muted hover:text-text-dim"
                 )}
               >
                 {CATEGORY_META[cat]?.label}
@@ -136,7 +136,7 @@ export default function SkillsSection({ skills }: { skills: Skill[] }) {
         </div>
 
         {/* Badges Grid */}
-        <div className="min-h-[400px]">
+        <div className="min-h-[120px]">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeCategory}

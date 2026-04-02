@@ -17,7 +17,7 @@ const TIMELINE = [
 
 export default function AboutSection() {
   return (
-    <section id="about" className="py-32 relative border-t border-border-dim overflow-hidden">
+    <section id="about" className="pt-6 pb-6 relative border-t border-border-dim overflow-hidden">
       {/* Background ambient glow */}
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[600px] h-[600px] bg-gold rounded-full opacity-[0.02] blur-[100px] pointer-events-none" />
 
