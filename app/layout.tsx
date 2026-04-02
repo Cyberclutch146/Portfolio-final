@@ -8,7 +8,6 @@ import Footer from "@/components/layout/Footer";
 import LoadingScreen from "@/components/layout/LoadingScreen";
 import SocialDock from "@/components/layout/SocialDock";
 import ScrollWheel from "@/components/layout/ScrollWheel";
-import CanvasCursor from "@/components/CanvasCursor";
 import { cn } from "@/lib/utils";
 import SmoothScrolling from "@/components/layout/SmoothScrolling";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -95,7 +94,6 @@ export default function RootLayout({
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark" disableTransitionOnChange>
-          <CanvasCursor />
           <ScrollWheel />
           <SmoothScrolling>
             <LoadingScreen>

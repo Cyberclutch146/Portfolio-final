@@ -97,7 +97,7 @@ export default function HeroSection() {
       className="relative min-h-[100vh] lg:min-h-screen flex items-center overflow-hidden bg-background transition-colors duration-500"
     >
       {/* ── Threads OGL Background ── */}
-      <div className="absolute inset-0 z-0 mix-blend-screen opacity-90 overflow-hidden" aria-hidden="true">
+      <div className="absolute inset-0 z-0 mix-blend-screen opacity-90 overflow-hidden hidden md:block" aria-hidden="true">
         {mounted && (
           <Threads 
             color={[0.85, 0.65, 0.15]}
@@ -109,7 +109,7 @@ export default function HeroSection() {
         )}
       </div>
 
-      <div className="section-container relative z-10 w-full pt-32 pb-20 flex flex-col lg:flex-row justify-between items-center gap-10">
+      <div className="section-container relative z-10 w-full pt-28 pb-16 lg:pt-32 lg:pb-20 flex flex-col lg:flex-row justify-between items-center gap-10">
         {mounted && (
           <motion.div
             variants={containerVariants}
@@ -159,15 +159,15 @@ export default function HeroSection() {
             {/* CTA row */}
             <motion.div
               variants={itemVariants}
-              className="mt-10 flex flex-wrap gap-4 items-center"
+              className="mt-8 lg:mt-10 flex flex-col sm:flex-row gap-4 items-center w-full sm:w-auto"
             >
-              <Link href="/#projects" className="btn-primary group">
+              <Link href="/#projects" className="btn-primary group w-full sm:w-auto justify-center">
                 <span>View Projects</span>
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden className="transition-transform group-hover:translate-x-1">
                   <path d="M1 7h12M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </Link>
-              <Link href="/#contact" className="btn-ghost group">
+              <Link href="/#contact" className="btn-ghost group w-full sm:w-auto justify-center">
                 <span>Contact</span>
               </Link>
             </motion.div>
@@ -198,7 +198,7 @@ export default function HeroSection() {
         )}
 
         {/* ── Profile Card ── */}
-        <div className="relative w-full h-auto lg:h-[800px] lg:w-[40%] flex justify-center items-center pointer-events-auto mt-20 lg:-mt-16 z-20">
+        <div className="relative w-full h-[500px] sm:h-[600px] lg:h-[800px] lg:w-[40%] flex justify-center items-center pointer-events-auto mt-12 lg:-mt-16 z-20">
           {mounted && (
             <motion.div
               initial={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
