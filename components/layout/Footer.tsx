@@ -17,7 +17,20 @@ export default function Footer() {
       <div className="section-container py-10">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
           {/* Left */}
-          <div>
+          <div className="flex flex-col items-start">
+            <button 
+              onClick={() => {
+                document.body.style.transition = "transform 2s ease-in-out";
+                document.body.style.transform = "rotate(360deg)";
+                setTimeout(() => {
+                  document.body.style.transition = "";
+                  document.body.style.transform = "";
+                }, 2000);
+              }}
+              className="mb-8 font-mono text-[9px] tracking-[0.3em] font-bold text-red-500/50 border border-red-500/30 px-3 py-1 rounded hover:bg-red-500/10 hover:text-red-400 hover:shadow-[0_0_15px_rgba(239,68,68,0.3)] transition-all animate-pulse"
+            >
+              DO NOT PRESS
+            </button>
             <p className="font-display font-semibold text-ink-200 text-sm mb-1">
               Swagata Ganguly
             </p>

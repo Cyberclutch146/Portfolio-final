@@ -20,15 +20,25 @@ const ROLES = [
   "bends hardware to his will.",
 ];
 
+const GLITCH_ROLES = [
+  "professional googler.",
+  "certified stack overflow copy-paster.",
+  "converts caffeine to commits.",
+  "currently breaking production.",
+];
+
 // ── Animated cursor ───────────────────────────────────────────────────────────
 function TypingText() {
+  const [isGlitching, setIsGlitching] = useState(false);
+  const clickCount = useRef(0);
   const [roleIndex, setRoleIndex] = useState(0);
   const [displayed, setDisplayed] = useState("");
   const [deleting, setDeleting] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    const current = ROLES[roleIndex];
+    const activeRoles = isGlitching ? GLITCH_ROLES : ROLES;
+    const current = activeRoles[roleIndex % activeRoles.length];
 
     if (!deleting && displayed.length < current.length) {
       // Type forward
@@ -46,14 +56,30 @@ function TypingText() {
     } else if (deleting && displayed.length === 0) {
       // Move to next role
       setDeleting(false);
-      setRoleIndex((prev) => (prev + 1) % ROLES.length);
+      setRoleIndex((prev) => prev + 1);
     }
 
     return () => { if (timeoutRef.current) clearTimeout(timeoutRef.current); };
   }, [displayed, deleting, roleIndex]);
 
   return (
-    <span className="text-gradient font-light">
+    <span 
+      className={`text-gradient font-light cursor-pointer select-none transition-colors duration-300 ${isGlitching ? 'text-[#00ff41] font-mono tracking-tighter' : ''}`}
+      title="Click me... I dare you."
+      onClick={() => {
+        if (!isGlitching) {
+          clickCount.current += 1;
+          if (clickCount.current >= 3) {
+            setIsGlitching(true);
+            setDeleting(true); // force delete to start glitch typing
+            setTimeout(() => {
+              setIsGlitching(false);
+              clickCount.current = 0;
+            }, 8000);
+          }
+        }
+      }}
+    >
       {displayed}
       <AnimatePresence>
         <motion.span

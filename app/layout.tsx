@@ -11,6 +11,8 @@ import ScrollWheel from "@/components/layout/ScrollWheel";
 import { cn } from "@/lib/utils";
 import SmoothScrolling from "@/components/layout/SmoothScrolling";
 import { ThemeProvider } from "@/components/theme-provider";
+import ConsoleGreeting from "@/components/easter-eggs/ConsoleGreeting";
+import KonamiCode from "@/components/easter-eggs/KonamiCode";
 
 // ── SEO Metadata ─────────────────────────────────────────────────────────────
 export const metadata: Metadata = {
@@ -94,6 +96,8 @@ export default function RootLayout({
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark" disableTransitionOnChange>
+          <ConsoleGreeting />
+          <KonamiCode />
           <ScrollWheel />
           <SmoothScrolling>
             <LoadingScreen>

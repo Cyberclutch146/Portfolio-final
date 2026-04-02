@@ -39,6 +39,18 @@ export default function Navbar() {
   // Close mobile nav on route change
   useEffect(() => { setMobileOpen(false); }, [pathname]);
 
+  const handleLogoClick = async (e: React.MouseEvent) => {
+    try {
+      const confetti = (await import("canvas-confetti")).default;
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.3 },
+        colors: ['#ccaa2c', '#00ff41', '#ffffff']
+      });
+    } catch (err) {}
+  };
+
   return (
     <motion.header
       initial={{ y: -40, opacity: 0, x: "-50%" }}
@@ -56,6 +68,7 @@ export default function Navbar() {
           {/* Logo / Name */}
           <Link
             href="/"
+            onClick={handleLogoClick}
             className="group flex items-center gap-4 relative z-10"
             aria-label="Swagata Ganguly — Home"
           >

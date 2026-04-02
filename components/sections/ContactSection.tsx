@@ -264,7 +264,24 @@ export default function ContactSection() {
                   )}
 
                   {/* Submit */}
-                  <div className="pt-4 flex justify-end">
+                  <div className="pt-4 flex justify-between items-center relative z-20">
+                    <button
+                      type="button"
+                      className="text-[10px] uppercase tracking-[0.2em] font-mono text-text-muted opacity-50 select-none z-50 absolute left-0"
+                      onPointerEnter={(e) => {
+                        const target = e.currentTarget;
+                        const bx = (Math.random() > 0.5 ? 1 : -1) * (50 + Math.random() * 200);
+                        const by = (Math.random() > 0.5 ? 1 : -1) * (50 + Math.random() * 100);
+                        target.style.transform = `translate(${bx}px, ${by}px)`;
+                        target.style.transition = "transform 0.15s cubic-bezier(0.25, 1, 0.5, 1)";
+                      }}
+                      title="Try clicking it..."
+                    >
+                      DON'T CONNECT
+                    </button>
+
+                    <div className="flex-1" />
+                    
                     <button
                       type="submit"
                       disabled={formState === "submitting"}

@@ -31,9 +31,9 @@ export default function NotFound() {
           <Link href="/" className="btn-primary min-w-[140px] justify-center">
             <span>GO HOME</span>
           </Link>
-          <Link href="/#projects" className="btn-ghost min-w-[140px] justify-center">
-            <span>SEE PROJECTS</span>
-          </Link>
+          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noreferrer" className="btn-ghost min-w-[140px] justify-center text-red-400/80 hover:text-red-400 hover:border-red-400">
+            <span>SYSTEM RESTORE</span>
+          </a>
         </div>
       </div>
     </div>

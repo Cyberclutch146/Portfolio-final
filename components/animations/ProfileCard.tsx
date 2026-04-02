@@ -337,7 +337,26 @@ const ProfileCardComponent = ({
               {showUserInfo && (
                 <div className="pc-footer pc-user-info">
                   <div className="pc-user-details">
-                    <div className="pc-mini-avatar">
+                    <div 
+                      className="pc-mini-avatar"
+                      style={{ cursor: "pointer" }}
+                      onClick={(e) => {
+                        const target = e.currentTarget;
+                        const count = parseInt(target.getAttribute('data-clicks') || '0') + 1;
+                        target.setAttribute('data-clicks', count.toString());
+                        if (count >= 5) {
+                          import("canvas-confetti").then(confetti => confetti.default());
+                          target.setAttribute('data-clicks', '0');
+                          target.style.transform = "rotate(3600deg)";
+                          target.style.transition = "transform 3s cubic-bezier(0.25, 1, 0.5, 1)";
+                          setTimeout(() => { 
+                            target.style.transition = "none"; 
+                            target.style.transform = "none"; 
+                          }, 3500);
+                        }
+                      }}
+                      title="Tap 5 times!"
+                    >
                       <img
                         src={miniAvatarUrl || avatarUrl}
                         alt={`${name || 'User'} mini avatar`}
