@@ -1,6 +1,6 @@
 // components/layout/Footer.tsx
 // Minimal footer with social links and a location indicator
-
+"use client";
 import Link from "next/link";
 
 const SOCIAL_LINKS = [
