@@ -14,6 +14,7 @@ import {
   SiCplusplus, SiJavascript, SiTypescript, SiPython, SiSolidity, SiHtml5,
   SiReact, SiNextdotjs, SiNodedotjs, SiExpress, SiVite, SiSocketdotio, SiEthereum, SiPandas, SiPytorch,
   SiFirebase, SiSupabase, SiMongodb, SiPostgresql, SiMysql, SiVercel, SiGooglecloud,
+  SiWebrtc, SiTailwindcss,
   SiArduino, SiGit, SiGithub, SiNotion, SiFigma, SiFramer,
   SiEspressif, SiKicad
 } from "react-icons/si";
@@ -22,6 +23,7 @@ const ICON_MAP: Record<string, React.ElementType> = {
   SiCplusplus, FaJava, SiJavascript, SiTypescript, SiPython, SiSolidity, SiHtml5,
   SiReact, SiNextdotjs, SiNodedotjs, SiExpress, SiVite, SiSocketdotio, SiWeb3dotjs: SiEthereum, SiPandas, SiPytorch,
   SiFirebase, SiSupabase, SiMongodb, SiPostgresql, SiMysql, SiVercel, SiGooglecloud,
+  SiWebrtc, SiTailwindcss,
   SiArduino, SiGit, SiGithub, SiNotion, SiFigma, SiFramer,
   SiEspressif, SiKicad
 };
