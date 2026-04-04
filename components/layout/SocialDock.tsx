@@ -15,7 +15,7 @@ export default function SocialDock() {
     let i = 0;
     setTerminalText("");
     const interval = setInterval(() => {
-      setTerminalText((prev) => prev + text.charAt(i));
+      setTerminalText(text.substring(0, i + 1));
       i++;
       if (i >= text.length) clearInterval(interval);
     }, 35);

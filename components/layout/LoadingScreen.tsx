@@ -296,7 +296,7 @@ const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&*";
 
 function DecryptingLine({ text, delay = 0 }: { text: string; delay?: number }) {
   const [display, setDisplay] = React.useState(() =>
-    text.split("").map(() => CHARS[Math.floor(Math.random() * CHARS.length)])
+    text.split("").map(() => "-")
   );
   const [done, setDone] = React.useState(false);
 

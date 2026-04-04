@@ -4,9 +4,9 @@
 import Link from "next/link";
 
 const SOCIAL_LINKS = [
-  { label: "GitHub",   href: "https://github.com/swagata-ganguly" },
-  { label: "LinkedIn", href: "https://linkedin.com/in/swagata-ganguly" },
-  { label: "Email",    href: "mailto:contact@swagata.dev" },
+  { label: "GitHub", href: "https://github.com/swagata-ganguly" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/swagata-ganguly-453aa6327/" },
+  { label: "Email", href: "mailto:sagotogdg@gmail.com" },
 ];
 
 export default function Footer() {
@@ -18,7 +18,7 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
           {/* Left */}
           <div className="flex flex-col items-start">
-            <button 
+            <button
               onClick={() => {
                 document.body.style.transition = "transform 2s ease-in-out";
                 document.body.style.transform = "rotate(360deg)";
